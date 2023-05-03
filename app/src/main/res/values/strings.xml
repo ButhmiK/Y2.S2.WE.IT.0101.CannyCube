@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EMP</string>
+    <string name="EMPID">Employee ID</string>
+    <string name="EMPID1">Employee ID</string>
+    <string name="CompName">Company Name</string>
+    <string name="ADDRESS">Address</string>
+    <string name="TP">Telephone Number</string>
+    <string name="PASSWORD">Password</string>
+    <string name="PASSWORD2">Confirm Password</string>
+    <string name="SIGNUP">SIGN UP</string>
+    <string name="LOGIN">LOG IN</string>
+</resources>
