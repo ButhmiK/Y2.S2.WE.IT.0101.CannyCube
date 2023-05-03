@@ -5,7 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.c_login.income.StudentModel
+import com.example.c_login.income.IncomeModel
+import com.example.c_login.login_company.UserModel
 
 class DataBaseHelper (context: Context):
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
@@ -18,10 +19,11 @@ class DataBaseHelper (context: Context):
         private const val PASSWORD_ONE ="password_one"
         private const val PASSWORD_TWO = "password_two"
 
-        private const val TBL_STUDENT ="tbl_student"
-        private const val ID = "id"
-        private const val NAME = "name"
-        private const val EMAIL = "email"
+        private const val TBL_INCOME ="tbl_income"
+        private const val INC_ID = "inc_id"
+        private const val INC_CATEGORY = "inc_category"
+        private const val INC_MONTH = "inc_month"
+        private const val INC_AMOUNT = "inc_amount"
 
     }
 
@@ -30,23 +32,24 @@ class DataBaseHelper (context: Context):
         db?.execSQL("CREATE TABLE $TBL_USER (username TEXT PRIMARY KEY, password_one TEXT," +
                 "password_two TEXT)")
 
-        val createTblStudent =
-            ("CREATE TABLE " + TBL_STUDENT + "("
-                    + ID + " PRIMARY KEY," + NAME + " TEXT,"
-                    + EMAIL +" TEXT"+ ")")
+        val createTblIncome =
+            ("CREATE TABLE " + TBL_INCOME + "("
+                    + INC_ID + " PRIMARY KEY," + INC_CATEGORY + " TEXT,"
+                    + INC_MONTH +" TEXT," + INC_AMOUNT + " TEXT"+ ")")
 
-        db?.execSQL(createTblStudent)
+        db?.execSQL(createTblIncome)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS $TBL_USER")
         onCreate(db)
-        db!!.execSQL("DROP TABLE IF EXISTS $TBL_STUDENT")
+        db!!.execSQL("DROP TABLE IF EXISTS $TBL_INCOME")
         onCreate(db)
     }
 
 
-
+    //Login database handling
 
     fun getAllUsers():ArrayList<UserModel>{
         val userArray : ArrayList<UserModel> = ArrayList()
@@ -117,24 +120,26 @@ class DataBaseHelper (context: Context):
 
     }
 
+    //Income Database handling
 
-    fun insertStudent(std: StudentModel): Long {
+    fun insertIncome(inc: IncomeModel): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(ID,std.id)
-        contentValues.put(NAME,std.name)
-        contentValues.put(EMAIL,std.email)
+        contentValues.put(INC_ID,inc.inc_id)
+        contentValues.put(INC_CATEGORY,inc.inc_category)
+        contentValues.put(INC_MONTH,inc.inc_month)
+        contentValues.put(INC_AMOUNT,inc.inc_amount)
 
-        val success = db.insert(TBL_STUDENT,null, contentValues)
+        val success = db.insert(TBL_INCOME,null, contentValues)
         db.close()
         return success
     }
 
 
-    fun getAllStudent(): ArrayList<StudentModel> {
+    fun getAllIncome(): ArrayList<IncomeModel> {
 
-        val stdList: ArrayList<StudentModel> = ArrayList()
-        val selectQuery = "SELECT * FROM $TBL_STUDENT"
+        val incList: ArrayList<IncomeModel> = ArrayList()
+        val selectQuery = "SELECT * FROM $TBL_INCOME"
         val db = this.readableDatabase
 
         val cursor: Cursor?
@@ -149,46 +154,49 @@ class DataBaseHelper (context: Context):
         }
 
         var id: String
-        var name: String
-        var email: String
+        var category: String
+        var month: String
+        var amount: String
 
         if (cursor.moveToFirst()) {
             do {
-                id = cursor.getString(cursor.getColumnIndexOrThrow("id"))
-                name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
-                email = cursor.getString(cursor.getColumnIndexOrThrow("email"))
+                id = cursor.getString(cursor.getColumnIndexOrThrow("inc_id"))
+                category = cursor.getString(cursor.getColumnIndexOrThrow("inc_category"))
+                month = cursor.getString(cursor.getColumnIndexOrThrow("inc_month"))
+                amount = cursor.getString(cursor.getColumnIndexOrThrow("inc_amount"))
 
-                val std = StudentModel(id = id, name = name, email = email)
-                stdList.add(std)
+                val inc = IncomeModel(inc_id = id, inc_category = category, inc_month = month, inc_amount = amount)
+                incList.add(inc)
 
             } while (cursor.moveToNext())
 
         }
-        return stdList
+        return incList
     }
 
-    fun updateStudent(std: StudentModel): Int{
+    fun updateIncome(inc: IncomeModel): Int{
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(ID, std.id)
-        contentValues.put(NAME, std.name)
-        contentValues.put(EMAIL, std.email)
+        contentValues.put(INC_ID, inc.inc_id)
+        contentValues.put(INC_CATEGORY, inc.inc_category)
+        contentValues.put(INC_MONTH, inc.inc_month)
+        contentValues.put(INC_AMOUNT, inc.inc_amount)
 
-        val sid = std.id;
+        val iid = inc.inc_id;
 
-        val success = db.update(TBL_STUDENT, contentValues, "id= '$sid'", null)
+        val success = db.update(TBL_INCOME, contentValues, "inc_id= '$iid'", null)
         db.close()
         return success
 
     }
 
-    fun deleteStudentById(id: String): Int{
+    fun deleteIncomeById(iid: String): Int{
         val db = this.writableDatabase
 
         val contentValues = ContentValues()
-        contentValues.put(ID, id)
+        contentValues.put(INC_ID, iid)
 
-        val success = db.delete(TBL_STUDENT, "id='$id'", null)
+        val success = db.delete(TBL_INCOME, "inc_id='$iid'", null)
         db.close()
         return success
     }

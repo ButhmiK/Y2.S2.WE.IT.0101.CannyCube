@@ -1,4 +1,4 @@
-package com.example.c_login
+package com.example.c_login.login_company
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.c_login.DataBaseHelper
+import com.example.c_login.R
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -15,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etUsername: EditText
     private lateinit var etPassword: EditText
     private lateinit var etComfirmPassword: EditText
-    private lateinit var db:DataBaseHelper
+    private lateinit var db: DataBaseHelper
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (passwordText.equals(comPasswordText)){
                     if (saveData==true){
                         Toast.makeText(this@RegisterActivity,"User Registered Successfully!",Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this,MainActivity::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }else{
@@ -61,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         backBtn.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
             }

@@ -1,4 +1,4 @@
-package com.example.c_login
+package com.example.c_login.login_company
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.c_login.DataBaseHelper
+import com.example.c_login.FunctionNavigate
+import com.example.c_login.R
 
 class MainActivity : AppCompatActivity() {
 

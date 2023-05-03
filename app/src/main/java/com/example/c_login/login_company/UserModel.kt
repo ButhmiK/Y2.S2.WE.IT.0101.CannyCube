@@ -1,4 +1,4 @@
-package com.example.c_login
+package com.example.c_login.login_company
 
 data class UserModel( var username: String ="",
                       var password_one: String ="",

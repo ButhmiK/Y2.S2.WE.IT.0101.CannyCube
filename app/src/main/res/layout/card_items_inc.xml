@@ -16,17 +16,22 @@
             android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Id"/>
+            tools:text="Income ID" />
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Name"/>
+            tools:text="Category"/>
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Email"/>
+            tools:text="Month"/>
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Amount"/>
 
     </LinearLayout>
 

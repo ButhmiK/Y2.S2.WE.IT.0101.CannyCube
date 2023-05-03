@@ -12,16 +12,19 @@
         android:theme="@style/Theme.C_Login"
         tools:targetApi="31">
         <activity
+            android:name=".StartupActivity"
+            android:exported="true" />
+        <activity
             android:name=".FunctionNavigate"
             android:exported="false" />
         <activity
             android:name=".income.IncomeActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".login_company.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login_company.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

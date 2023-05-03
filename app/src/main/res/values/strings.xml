@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">C_Login</string>
+
+    <string-array name="income_categories">
+        <item>Shares</item>
+        <item>Selling</item>
+        <item>Renting</item>
+        <item>Exports</item>
+    </string-array>
 </resources>

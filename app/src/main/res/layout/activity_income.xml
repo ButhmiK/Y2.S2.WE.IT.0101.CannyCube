@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-
     tools:context=".income.IncomeActivity">
 
 
@@ -16,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical"
-        android:text="SQLite Demo"
+        android:text="Incomes"
         />
 
     <EditText
@@ -24,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Enter Id"/>
+        android:hint="Enter Income Id"/>
 
     <EditText
         android:id="@+id/edName"
@@ -33,7 +32,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="Enter Name"/>
+        android:hint="Enter Category"/>
+
+    <EditText
+        android:id="@+id/edAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter Month"/>
 
     <EditText
         android:id="@+id/edEmail"
@@ -42,7 +50,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="Enter Email"/>
+        android:hint="Enter Amount"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +88,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="75dp" />
 
 
 </LinearLayout>

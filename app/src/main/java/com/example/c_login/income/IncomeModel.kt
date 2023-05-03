@@ -1,6 +1,6 @@
 package com.example.c_login.income
 
-data class StudentModel(var id: String = "", var name: String = "", var email: String="")
+data class IncomeModel(var inc_id: String = "", var inc_category: String = "", var inc_month: String="",var inc_amount: String="")
 
    // companion object{
 

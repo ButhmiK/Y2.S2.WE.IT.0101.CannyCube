@@ -13,9 +13,10 @@ import com.example.c_login.DataBaseHelper
 import com.example.c_login.R
 
 class IncomeActivity : AppCompatActivity() {
-    private lateinit var edId: EditText
-    private lateinit var edName: EditText
-    private lateinit var edEmail: EditText
+    private lateinit var incId: EditText
+    private lateinit var incCategory: EditText
+    private lateinit var incMonth: EditText
+    private lateinit var incAmount: EditText
     private lateinit var btnAdd: Button
     private lateinit var btnView: Button
     private lateinit var btnUpdate: Button
@@ -24,8 +25,8 @@ class IncomeActivity : AppCompatActivity() {
 
     private lateinit var sqliteHelper: DataBaseHelper
     private lateinit var recyclerView: RecyclerView
-    private var adapter: StudentAdapter? = null
-    private var std: StudentModel? = null
+    private var adapter: IncomeAdapter? = null
+    private var inc: IncomeModel? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,50 +37,53 @@ class IncomeActivity : AppCompatActivity() {
         initRecyclerView()
         sqliteHelper = DataBaseHelper(this)
 
-        btnAdd.setOnClickListener{ addStudent() }
-        btnView.setOnClickListener{ getStudent() }
-        btnUpdate.setOnClickListener{ updateStudent() }
+        btnAdd.setOnClickListener{ addIncome() }
+        btnView.setOnClickListener{ getIncome() }
+        btnUpdate.setOnClickListener{ updateIncome() }
 
 
         adapter?.setOnClickItem {
-            Toast.makeText(this,it.name, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,it.inc_category, Toast.LENGTH_SHORT).show()
 
-            edId.setText(it.id)
-            edName.setText(it.name)
-            edEmail.setText(it.email)
-            std = it
+            incId.setText(it.inc_id)
+            incCategory.setText(it.inc_category)
+            incMonth.setText(it.inc_month)
+            incAmount.setText(it.inc_amount)
+
+            inc = it
         }
 
         adapter?.setOnClickDelete {
-            deleteStudent(it.id)
+            deleteIncome(it.inc_id)
         }
     }
 
-    private fun getStudent(){
-        val stdList = sqliteHelper.getAllStudent()
-        Log.e("pppp","${stdList.size}")
-        adapter?.addItems(stdList)
+    private fun getIncome(){
+        val incList = sqliteHelper.getAllIncome()
+        Log.e("pppp","${incList.size}")
+        adapter?.addItems(incList)
     }
 
 
 
-    private fun addStudent() {
-        val id = edId.text.toString()
-        val name = edName.text.toString()
-        val email = edEmail.text.toString()
+    private fun addIncome() {
+        val id = incId.text.toString()
+        val category = incCategory.text.toString()
+        val month = incMonth.text.toString()
+        val amount = incAmount.text.toString()
 
-        if (id.isEmpty() || name.isEmpty() || email.isEmpty()) {
+        if (id.isEmpty() || category.isEmpty() || month.isEmpty() || amount.isEmpty()) {
 
             Toast.makeText(this, "Please enter required field", Toast.LENGTH_SHORT).show()
 
         } else {
-            val std = StudentModel(id = id, name = name, email = email)
-            val status = sqliteHelper.insertStudent(std)
+            val inc = IncomeModel(inc_id = id, inc_category = category, inc_month = month, inc_amount = amount)
+            val status = sqliteHelper.insertIncome(inc)
 
             if (status > -1) {
                 Toast.makeText(this, "Student Added", Toast.LENGTH_SHORT).show()
                 clearEditText()
-                getStudent()
+                getIncome()
 
 
             } else {
@@ -90,36 +94,37 @@ class IncomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateStudent(){
-        val id = edId.text.toString()
-        val name = edName.text.toString()
-        val email = edEmail.text.toString()
+    private fun updateIncome(){
+        val id = incId.text.toString()
+        val category = incCategory.text.toString()
+        val month = incMonth.text.toString()
+        val amount = incAmount.text.toString()
 
-        if(id == std?.id && name == std?.name && email == std?.email){
+        if(id == inc?.inc_id && category == inc?.inc_category && month == inc?.inc_month && amount == inc?.inc_amount){
             Toast.makeText(this,"Record not changed", Toast.LENGTH_SHORT).show()
             return
         }
-        if(std == null) return
+        if(inc == null) return
 
-        val std = StudentModel(id = id, name = name, email = email)
-        val status = sqliteHelper.updateStudent(std)
+        val inc = IncomeModel(inc_id = id, inc_category = category, inc_month = month, inc_amount = amount)
+        val status = sqliteHelper.updateIncome(inc)
         if (status > -1){
             clearEditText()
-            getStudent()
+            getIncome()
         }else{
             Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun deleteStudent(id: String){
+    private fun deleteIncome(id: String){
         //if(id == null)return
 
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Are you sure to delete item?")
         builder.setCancelable(true)
         builder.setPositiveButton("Yes"){ dialog, _->
-            sqliteHelper.deleteStudentById(id)
-            getStudent()
+            sqliteHelper.deleteIncomeById(id)
+            getIncome()
             dialog.dismiss()
         }
         builder.setNegativeButton("No"){ dialog, _->
@@ -132,24 +137,26 @@ class IncomeActivity : AppCompatActivity() {
     }
 
     private fun clearEditText(){
-        edId.setText("")
-        edName.setText("")
-        edEmail.setText("")
-        edName.requestFocus()
+        incId.setText("")
+        incCategory.setText("")
+        incMonth.setText("")
+        incAmount.setText("")
+        incCategory.requestFocus()
     }
 
 
     private fun initRecyclerView(){
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = StudentAdapter()
+        adapter = IncomeAdapter()
         recyclerView.adapter = adapter
 
     }
 
     private fun initView(){
-        edId = findViewById(R.id.edId)
-        edName = findViewById(R.id.edName)
-        edEmail = findViewById(R.id.edEmail)
+        incId = findViewById(R.id.edId)
+        incCategory = findViewById(R.id.edName)
+        incMonth = findViewById(R.id.edEmail)
+        incAmount = findViewById(R.id.edAmount)
         btnAdd = findViewById(R.id.btnAdd)
         btnView = findViewById(R.id.btnView)
         btnUpdate = findViewById(R.id.btnUpdate)
