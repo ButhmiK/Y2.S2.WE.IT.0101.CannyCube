@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity() {
         if (eid.isEmpty() || company_name.isEmpty()){
             Toast.makeText(this,"Please Enter required field", Toast.LENGTH_SHORT).show()
         }else{
-            val emp = EmployeeModel(eid = eid, company_name = company_name, address = address, tp = tp, password = password )
+            val emp = EmployeeModel(eid = eid, company_name = company_name,
+                address = address, tp = tp, password = password )
+
             val status = sqLiteHelper.insertEmployee(emp)
 
             //Check insert success or not success
