@@ -81,7 +81,7 @@ class IncomeActivity : AppCompatActivity() {
             val status = sqliteHelper.insertIncome(inc)
 
             if (status > -1) {
-                Toast.makeText(this, "Student Added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Income details Added", Toast.LENGTH_SHORT).show()
                 clearEditText()
                 getIncome()
 

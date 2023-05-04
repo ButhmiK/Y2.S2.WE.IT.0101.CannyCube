@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import com.example.c_login.expense.ExpenseActivity
 import com.example.c_login.income.IncomeActivity
 
 class FunctionNavigate : AppCompatActivity() {
@@ -17,10 +18,11 @@ class FunctionNavigate : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_function_navigate)
 
+
         incomebtn = findViewById<Button>(R.id.button8)
-        expencesbtn = findViewById<Button>(R.id.button8)
-        companybtn = findViewById<Button>(R.id.button8)
-        employeebtn = findViewById<Button>(R.id.button8)
+        expencesbtn = findViewById<Button>(R.id.button9)
+        companybtn = findViewById<Button>(R.id.button5)
+        employeebtn = findViewById<Button>(R.id.button10)
 
         incomebtn.setOnClickListener {
             val intent = Intent(this,IncomeActivity::class.java)
@@ -28,7 +30,7 @@ class FunctionNavigate : AppCompatActivity() {
             finish()
         }
         expencesbtn.setOnClickListener {
-            val intent = Intent(this,IncomeActivity::class.java)
+            val intent = Intent(this,ExpenseActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -42,6 +44,7 @@ class FunctionNavigate : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
 
     }

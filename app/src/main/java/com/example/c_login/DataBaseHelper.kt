@@ -13,11 +13,13 @@ class DataBaseHelper (context: Context):
 
     companion object{
         private const val DATABASE_NAME="cannycube.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
+
         private const val TBL_USER="user_table"
         private const val USERNAME = "username"
         private const val PASSWORD_ONE ="password_one"
         private const val PASSWORD_TWO = "password_two"
+
 
         private const val TBL_INCOME ="tbl_income"
         private const val INC_ID = "inc_id"
@@ -32,12 +34,16 @@ class DataBaseHelper (context: Context):
         db?.execSQL("CREATE TABLE $TBL_USER (username TEXT PRIMARY KEY, password_one TEXT," +
                 "password_two TEXT)")
 
+
+
         val createTblIncome =
             ("CREATE TABLE " + TBL_INCOME + "("
                     + INC_ID + " PRIMARY KEY," + INC_CATEGORY + " TEXT,"
                     + INC_MONTH +" TEXT," + INC_AMOUNT + " TEXT"+ ")")
 
         db?.execSQL(createTblIncome)
+
+
     }
 
 
@@ -49,7 +55,10 @@ class DataBaseHelper (context: Context):
     }
 
 
-    //Login database handling
+
+
+
+    //Company Login database handling
 
     fun getAllUsers():ArrayList<UserModel>{
         val userArray : ArrayList<UserModel> = ArrayList()
@@ -88,6 +97,8 @@ class DataBaseHelper (context: Context):
         }
         return userArray
     }
+
+
 
     fun insertUserFunction(username:String,password:String,comPassword:String):Boolean{
         val db = this.writableDatabase
@@ -201,6 +212,7 @@ class DataBaseHelper (context: Context):
         return success
     }
     }
+
 
 
 

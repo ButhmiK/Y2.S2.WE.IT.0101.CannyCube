@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+      //  val startupEmployeeBtn = findViewById<Button>(R.id.button13)
+
         val registerButton = findViewById<Button>(R.id.button)
         val loginButton = findViewById<Button>(R.id.button4)
         etUsername = findViewById<EditText>(R.id.editTextTextPersonName2)
@@ -58,6 +60,8 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
 
     }
 
