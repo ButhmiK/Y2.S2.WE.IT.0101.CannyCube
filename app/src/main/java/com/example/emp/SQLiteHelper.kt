@@ -17,14 +17,14 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val COMPANY_NAME= "company_name"
         private const val ADDRESS= "address"
         private const val TP= "tp"
-        private const val PASSWORD= "password"
+
     }
 
     override fun onCreate(db:SQLiteDatabase?){
         val createTblEmployee =
                 ("CREATE TABLE " + TBL_EMPLOYEE +
                     "("  + ID +" INTEGER PRIMARY KEY," + EID + " STRING," + COMPANY_NAME +" TEXT,"
-                         + ADDRESS + " STRING," + TP + " STRING," + PASSWORD + " STRING" +         ")"
+                         + ADDRESS + " STRING," + TP + " STRING," +         ")"
                 )
 
         db?.execSQL(createTblEmployee)
@@ -46,7 +46,7 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
         contentValues.put(COMPANY_NAME,emp.company_name)
         contentValues.put(ADDRESS,emp.address)
         contentValues.put(TP,emp.tp)
-        contentValues.put(PASSWORD,emp.password)
+
 
         val success = db.insert(TBL_EMPLOYEE,null,contentValues)
         db.close()
@@ -75,7 +75,7 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
         var company_name:String
         var address:String
         var tp:String
-        var password:String
+
 
         if (cursor.moveToFirst()){
             do{
@@ -84,11 +84,11 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
                 company_name= cursor.getString(cursor.getColumnIndex("company_name"))
                 address= cursor.getString(cursor.getColumnIndex("address"))
                 tp= cursor.getString(cursor.getColumnIndex("tp"))
-                password= cursor.getString(cursor.getColumnIndex("password"))
+
 
                 val emp =EmployeeModel(
                     id = id, eid = eid, company_name = company_name,
-                    address = address, tp = tp, password = password )
+                    address = address, tp = tp )
 
                 empList.add(emp)
 

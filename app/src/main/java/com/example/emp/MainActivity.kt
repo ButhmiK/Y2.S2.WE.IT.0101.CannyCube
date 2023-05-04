@@ -6,46 +6,56 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var EMPID1:EditText
     private lateinit var CompName:EditText
     private lateinit var ADDRESS:EditText
-    private lateinit var TP:EditText
-    private lateinit var PASSWORD:EditText
+
+
     private lateinit var SIGNUP:Button
+    private lateinit var VIEW:Button
 
     private lateinit var sqLiteHelper: SQLiteHelper
+    private lateinit var recyclerView: RecyclerView
+    private var adapter:EmployeeAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.add_details)
 
         
         initView()
+        initRecyclerView()
         sqLiteHelper = SQLiteHelper(this)
 
         SIGNUP.setOnClickListener { addEmployee() }
+        VIEW.setOnClickListener{getEmployee()}
+
     }
 
-//    private fun getEmployee(){
-//        val stdList = sqLiteHelper.getALLEmployee()
-//        Log.e("gggg","$(empList.size)")
-//    }
+    private fun getEmployee(){
+        val empList = sqLiteHelper.getALLEmployee()
+        Log.e("gggg","$(empList.size)")
+
+        adapter?.addItem(empList)
+    }
 
 
     private fun addEmployee(){
         val eid = EMPID1.text.toString()
         val company_name = CompName.text.toString()
         val address = ADDRESS.text.toString()
-        val tp = TP.text.toString()
-        val password = PASSWORD.text.toString()
+
+
 
         if (eid.isEmpty() || company_name.isEmpty()){
             Toast.makeText(this,"Please Enter required field", Toast.LENGTH_SHORT).show()
         }else{
             val emp = EmployeeModel(eid = eid, company_name = company_name,
-                address = address, tp = tp, password = password )
+                address = address)
 
             val status = sqLiteHelper.insertEmployee(emp)
 
@@ -64,22 +74,27 @@ class MainActivity : AppCompatActivity() {
         EMPID1.setText("")
         CompName.setText("")
         ADDRESS.setText("")
-        TP.setText("")
-        PASSWORD.setText("")
-//        PASSWORD2.setText("")
+
+
         EMPID1.requestFocus()
-        PASSWORD.requestFocus()
-//        PASSWORD2.requestFocus()
+
     }
+
+    private fun initRecyclerView(){
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = EmployeeAdapter()
+        recyclerView.adapter = adapter
+    }
+
 
     private fun initView() {
         EMPID1    = findViewById(R.id.EMPID1)
         CompName  = findViewById(R.id.CompName)
         ADDRESS   = findViewById(R.id.ADDRESS)
-        TP        = findViewById(R.id.TP)
-        PASSWORD  = findViewById(R.id.PASSWORD)
-//        PASSWORD2 = findViewById(R.id.PASSWORD2)
-        SIGNUP    = findViewById(R.id.SIGNUP)
+
+
+        recyclerView = findViewById(R.id.recyclerView)
+
     }
 
    
@@ -87,10 +102,3 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-//LOGIN.setOnClickListener{
-//    if(EMPID1.text.isNullOrBlank()&&PASSWORD.text.isNullOrBlank()){
-//        Toast.makeText(this, "Please fill the required fields", Toast.LENGTH_SHORT).show()
-//    }else{
-//        Toast.makeText(this,"${EMPID1.text}is logged in", Toast.LENGTH_SHORT).show()
-//    }
-//}

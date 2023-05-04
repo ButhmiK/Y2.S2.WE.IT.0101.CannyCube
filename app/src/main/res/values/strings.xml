@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">EMP</string>
-    <string name="EMPID">Employee ID</string>
-    <string name="EMPID1">Employee ID</string>
-    <string name="CompName">Company Name</string>
-    <string name="ADDRESS">Address</string>
+    <string name="EMPID1">Expenses</string>
+    <string name="CompName">Week</string>
+    <string name="ADDRESS">Month</string>
     <string name="TP">Telephone Number</string>
     <string name="PASSWORD">Password</string>
     <string name="PASSWORD2">Confirm Password</string>
-    <string name="SIGNUP">SIGN UP</string>
+    <string name="ADD">ADD</string>
+    <string name="VIEW">VIEW</string>
     <string name="LOGIN">LOG IN</string>
+    <string name="btnDelete">Delete</string>
+    <string name="textView2">ADD YOUR EXPENSES</string>
 </resources>
