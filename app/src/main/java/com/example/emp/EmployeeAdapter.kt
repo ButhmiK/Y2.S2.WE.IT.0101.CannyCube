@@ -1,3 +1,4 @@
+
 package com.example.emp
 
 import android.view.LayoutInflater
@@ -10,36 +11,47 @@ import java.text.FieldPosition
 
 class EmployeeAdapter:RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>() {
     private var empList:ArrayList<EmployeeModel> = ArrayList()
+    private var onClickItem:((EmployeeModel) -> Unit)? = null
+    private var onClickDeleteItem:((EmployeeModel) -> Unit)? = null
 
-    fun addItem(items:ArrayList<EmployeeModel>){
+    fun addItems(items: ArrayList<EmployeeModel>){
         this.empList =items
-//        notifyDatasetChanged()
+        notifyDataSetChanged()
     }
 
+    fun setonClickItem(callback:(EmployeeModel) -> Unit){
+        this.onClickItem = callback
+    }
 
+    fun setOnClickDelete(callback: (EmployeeModel) -> Unit){
+        this.onClickDeleteItem = callback
+    }
 
-
-    override fun onCreateViewHolder(parent: ViewGroup,viewType:Int )=EmployeeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup,viewType:Int )= EmployeeViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.card_item_emp,parent,false)
     )
     override fun onBindViewHolder(holder:EmployeeViewHolder ,position:Int ){
         val emp = empList[position]
         holder.bindView(emp)
+        holder.itemView.setOnClickListener{ onClickItem?.invoke(emp) }
+        holder.btndelete.setOnClickListener{ onClickDeleteItem?.invoke(emp) }
     }
     override fun getItemCount():Int{
         return empList.size
     }
 
-    class EmployeeViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private var id = view.findViewById<TextView>(R.id.tvId)
-        private var name = view.findViewById<TextView>(R.id.tvName)
-        private var address = view.findViewById<TextView>(R.id.tvAddress)
-        private var btnDelete = view.findViewById<Button>(R.id.btnDelete)
+    class EmployeeViewHolder(var view: View): RecyclerView.ViewHolder(view){
+
+        private var expenses = view.findViewById<TextView>(R.id.Expenses)
+        private var week = view.findViewById<TextView>(R.id.Week)
+        private var month = view.findViewById<TextView>(R.id.Month)
+        var btndelete = view.findViewById<Button>(R.id.btnDelete)
 
         fun bindView(emp:EmployeeModel){
-            id.text = emp.id.toString()
-            name.text = emp.name
-            address.text = emp.address
+
+            expenses.text = emp.expenses
+            week.text = emp.week
+            month.text = emp.month
         }
     }
 }

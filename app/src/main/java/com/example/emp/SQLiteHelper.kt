@@ -1,3 +1,4 @@
+
 package com.example.emp
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -6,26 +7,24 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+//@Suppress("LocalVariableName")
 class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, null,DATABASE_VERSION) {
 
     companion object{
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "employee.db"
         private const val TBL_EMPLOYEE  = "tbl_employee"
-        private const val ID = "id"
-        private const val EID= "eid"
-        private const val COMPANY_NAME= "company_name"
-        private const val ADDRESS= "address"
-        private const val TP= "tp"
+        private const val Expenses= "expenses"
+        private const val Week= "week"
+        private const val Month= "month"
 
     }
 
+    @SuppressLint("SQLiteString")
     override fun onCreate(db:SQLiteDatabase?){
-        val createTblEmployee =
-                ("CREATE TABLE " + TBL_EMPLOYEE +
-                    "("  + ID +" INTEGER PRIMARY KEY," + EID + " STRING," + COMPANY_NAME +" TEXT,"
-                         + ADDRESS + " STRING," + TP + " STRING," +         ")"
-                )
+        val createTblEmployee = ("CREATE TABLE " + TBL_EMPLOYEE +
+                    "("  + Expenses + " STRING," + Week +" STRING,"
+                         + Month + " STRING" +  ")" )
 
         db?.execSQL(createTblEmployee)
     }
@@ -39,14 +38,11 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
 
     fun insertEmployee(emp:EmployeeModel): Long{
         val db = this.writableDatabase
-
         val contentValues = ContentValues()
-        contentValues.put(ID,emp.id)
-        contentValues.put(EID,emp.eid)
-        contentValues.put(COMPANY_NAME,emp.company_name)
-        contentValues.put(ADDRESS,emp.address)
-        contentValues.put(TP,emp.tp)
 
+        contentValues.put(Expenses, emp.expenses)
+        contentValues.put(Week,emp.week)
+        contentValues.put(Month, emp.month)
 
         val success = db.insert(TBL_EMPLOYEE,null,contentValues)
         db.close()
@@ -70,25 +66,24 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
             return ArrayList()
         }
 
-        var id:Int
-        var eid:String
-        var company_name:String
-        var address:String
-        var tp:String
+
+        var expenses:String
+        var week:String
+        var month:String
+
 
 
         if (cursor.moveToFirst()){
             do{
-                id = cursor.getInt(cursor.getColumnIndex("id"))
-                eid= cursor.getString(cursor.getColumnIndex("eid"))
-                company_name= cursor.getString(cursor.getColumnIndex("company_name"))
-                address= cursor.getString(cursor.getColumnIndex("address"))
-                tp= cursor.getString(cursor.getColumnIndex("tp"))
+
+                expenses= cursor.getString(cursor.getColumnIndex("expenses"))
+                week= cursor.getString(cursor.getColumnIndex("week"))
+                month= cursor.getString(cursor.getColumnIndex("month"))
+
 
 
                 val emp =EmployeeModel(
-                    id = id, eid = eid, company_name = company_name,
-                    address = address, tp = tp )
+                    expenses = expenses, week = week, month = month )
 
                 empList.add(emp)
 
@@ -96,6 +91,32 @@ class SQLiteHelper(context:Context):SQLiteOpenHelper(context, DATABASE_NAME, nul
         }
 
         return empList
+    }
+
+    fun updateEmployee(emp:EmployeeModel):Int{
+        val db =this.writableDatabase
+
+        val contentValues = ContentValues()
+        contentValues.put(Expenses, emp.expenses)
+        contentValues.put(Week, emp.week)
+        contentValues.put(Month, emp.month)
+
+        val expenses1 = emp.expenses
+
+        val success = db.update(TBL_EMPLOYEE, contentValues,"expenses='$expenses1'", null)
+        db.close()
+        return success
+
+    }
+    fun deleteEmployeeById(expenses:String): Int {
+        val db = this.writableDatabase
+
+        val contentValues = ContentValues()
+        contentValues.put(Expenses,expenses)
+
+        val success = db.delete(TBL_EMPLOYEE, "expenses='$expenses'",null)
+        db.close()
+        return success
     }
 
 
