@@ -4,88 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".FunctionNavigate"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="46dp">
 
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="420dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="4dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="#614545"
-        android:cropToPadding="false"
-
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg" />
-
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="150dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="92dp"
-        android:backgroundTint="#ED888287"
-        android:text="Income"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="747dp"
-        android:layout_height="600dp"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="440dp"
+        android:layout_marginBottom="360dp"
+        android:background="@drawable/_24420805_padded_logo"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/picture1" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="150dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#DD6EBB"
-        android:text="Company"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.071" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="150dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#74888287"
-        android:text="Employee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button9"
         android:layout_width="150dp"
         android:layout_height="68dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#F386D1"
+        android:backgroundTint="#E4C951"
         android:text="Expences"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/button8"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="#DDCB7F"
+        android:text="Income"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#B86206"
+        android:text="Company"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#FBAD1D"
+        android:text="Employee"
+        app:layout_constraintBottom_toTopOf="@+id/button10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button9"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <Button
+            android:id="@+id/navBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#C18818"
+            android:text="Back"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

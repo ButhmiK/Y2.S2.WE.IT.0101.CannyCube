@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class SQLiteHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
+class ExpenseDatabase(context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
 
     companion object {
 
@@ -38,13 +38,13 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NAME,nul
         onCreate(db)
     }
 
-    fun insertStudent(std: ExpenseModel): Long {
+    fun insertStudent(exp: ExpenseModel): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(EXP_ID,std.exp_id)
-        contentValues.put(EXP_CATEGORY,std.exp_category)
-        contentValues.put(EXP_MONTH,std.exp_month)
-        contentValues.put(EXP_AMOUNT,std.exp_amount)
+        contentValues.put(EXP_ID,exp.exp_id)
+        contentValues.put(EXP_CATEGORY,exp.exp_category)
+        contentValues.put(EXP_MONTH,exp.exp_month)
+        contentValues.put(EXP_AMOUNT,exp.exp_amount)
 
         val success = db.insert(TBL_EXPENSE,null, contentValues)
         db.close()

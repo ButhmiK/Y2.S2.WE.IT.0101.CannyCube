@@ -3,92 +3,148 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".income.IncomeActivity">
 
 
-<TextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:text="Incomes"
-        />
+        android:textColor="#CEB66F"
+        android:textSize="34sp" />
 
     <EditText
         android:id="@+id/edId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Enter Income Id"/>
-
-    <EditText
-        android:id="@+id/edName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Enter Category"/>
 
-    <EditText
-        android:id="@+id/edAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Enter Month"/>
-
-    <EditText
-        android:id="@+id/edEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Enter Amount"/>
+        android:hint="Enter Income Id/Name"
+        android:paddingBottom="5dp"
+        android:textColor="#CEB66F"
+        android:textColorHint="#AA8B2E" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp">
 
-        <Button
-            android:id="@+id/btnAdd"
-            android:text="Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/btnView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/edAmount"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
-            android:text="View"
-            android:textAllCaps="false"/>
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Enter Date/Month"
+            android:inputType="datetime"
 
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Update"
-            android:textAllCaps="false"/>
+            android:textColor="#CEB66F"
+            android:textColorHint="#AA8B2E" />
 
+
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Enter Amount"
+            android:textColor="#CEB66F"
+            android:textColorHint="#AA8B2E" />
     </LinearLayout>
 
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
+        android:layout_height="134dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Enter Category/Description"
+        android:inputType="textMultiLine"
+        android:textColor="#CEB66F"
+        android:textAlignment="center"
+        android:textColorHint="#AA8B2E" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#CDB56F"
+        android:text="Add"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_margin="8dp"
+        android:background="#CDB56F"
+        android:text="Update"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="#CDB56F"
+        android:text="View"
+        android:layout_margin="8dp"
+        android:textAllCaps="false" />
+
+</LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="75dp" />
+        android:layout_height="147dp" />
+
+<LinearLayout
+    android:layout_marginTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/incBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#CCB46F"
+        android:text="Back"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:background="#CCB46F"
+        android:text="Dashboard"
+        android:textAllCaps="false" />
+
+</LinearLayout>
 
 
 </LinearLayout>

@@ -12,12 +12,14 @@
         android:theme="@style/Theme.C_Login"
         tools:targetApi="31">
         <activity
+            android:name=".company.CompanyActivity"
+            android:exported="false" />
+        <activity
             android:name=".expense.ExpenseActivity"
             android:exported="false" />
         <activity
             android:name=".employee.EmployeeActivity"
             android:exported="true" />
-
         <activity
             android:name=".FunctionNavigate"
             android:exported="true" />

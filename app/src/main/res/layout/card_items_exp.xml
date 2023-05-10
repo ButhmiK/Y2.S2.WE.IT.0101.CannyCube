@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="#EFDEAC"
     android:padding="16dp"
     android:weightSum="1">
     <LinearLayout
@@ -16,22 +16,29 @@
             android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Income ID" />
+            android:textColor="@color/black"
+            tools:text="Expense ID" />
+
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Category"/>
+            android:textColor="@color/black"
+            tools:text="Category" />
+
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Month"/>
+            android:textColor="@color/black"
+            tools:text="Month" />
+
         <TextView
             android:id="@+id/tvAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Amount"/>
+            android:textColor="@color/black"
+            tools:text="Amount" />
 
     </LinearLayout>
 
@@ -40,8 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:backgroundTint="@color/black"
         android:text="Delete"
-        android:textAllCaps="false"/>
+        android:textColor="#CEB66F"
+        android:textAllCaps="false" />
 
 </LinearLayout>
 

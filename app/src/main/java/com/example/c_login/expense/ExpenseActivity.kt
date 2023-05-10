@@ -1,5 +1,6 @@
 package com.example.c_login.expense
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -9,10 +10,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.c_login.FunctionNavigate
 import com.example.c_login.R
 
 class ExpenseActivity : AppCompatActivity() {
 
+    private lateinit var btnback: Button
 
     private lateinit var expId: EditText
     private lateinit var expCategory: EditText
@@ -24,7 +27,7 @@ class ExpenseActivity : AppCompatActivity() {
 
 
 
-    private lateinit var sqliteHelper: SQLiteHelper
+    private lateinit var sqliteHelper: ExpenseDatabase
     private lateinit var recyclerView: RecyclerView
     private var adapter: ExpenseAdapter? = null
     private var std: ExpenseModel? = null
@@ -36,11 +39,14 @@ class ExpenseActivity : AppCompatActivity() {
 
     initView()
     initRecyclerView()
-    sqliteHelper = SQLiteHelper(this)
+    sqliteHelper = ExpenseDatabase(this)
 
-    btnAdd.setOnClickListener{ addStudent() }
-    btnView.setOnClickListener{ getStudent() }
-    btnUpdate.setOnClickListener{ updateStudent() }
+
+    btnback = findViewById<Button>(R.id.expBack)
+
+    btnAdd.setOnClickListener{ addExpense() }
+    btnView.setOnClickListener{ getExpense() }
+    btnUpdate.setOnClickListener{ updateExpense() }
 
 
     adapter?.setOnClickItem {
@@ -54,11 +60,19 @@ class ExpenseActivity : AppCompatActivity() {
     }
 
     adapter?.setOnClickDelete {
-        deleteStudent(it.exp_id)
+        deleteExpense(it.exp_id)
     }
-}
 
-private fun getStudent(){
+
+        btnback.setOnClickListener {
+            val intent = Intent(this, FunctionNavigate::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+    }
+
+private fun getExpense(){
     val stdList = sqliteHelper.getAllStudent()
     Log.e("pppp","${stdList.size}")
     adapter?.addItems(stdList)
@@ -66,7 +80,7 @@ private fun getStudent(){
 
 
 
-private fun addStudent() {
+private fun addExpense() {
     val id = expId.text.toString()
     val category = expCategory.text.toString()
     val month = expMonth.text.toString()
@@ -83,7 +97,7 @@ private fun addStudent() {
         if (status > -1) {
             Toast.makeText(this, "Expense details Added", Toast.LENGTH_SHORT).show()
             clearEditText()
-            getStudent()
+            getExpense()
 
 
         } else {
@@ -94,7 +108,7 @@ private fun addStudent() {
     }
 }
 
-private fun updateStudent(){
+private fun updateExpense(){
     val id = expId.text.toString()
     val category = expCategory.text.toString()
     val month = expMonth.text.toString()
@@ -110,13 +124,13 @@ private fun updateStudent(){
     val status = sqliteHelper.updateStudent(std)
     if (status > -1){
         clearEditText()
-        getStudent()
+        getExpense()
     }else{
         Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
     }
 }
 
-private fun deleteStudent(id: String){
+private fun deleteExpense(id: String){
     //if(id == null)return
 
     val builder = AlertDialog.Builder(this)
@@ -124,7 +138,7 @@ private fun deleteStudent(id: String){
     builder.setCancelable(true)
     builder.setPositiveButton("Yes"){ dialog, _->
         sqliteHelper.deleteStudentById(id)
-        getStudent()
+        getExpense()
         dialog.dismiss()
     }
     builder.setNegativeButton("No"){ dialog, _->

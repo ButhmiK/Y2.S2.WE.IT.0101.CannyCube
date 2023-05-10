@@ -1,6 +1,7 @@
 package com.example.c_login.income
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -10,9 +11,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.c_login.DataBaseHelper
+import com.example.c_login.FunctionNavigate
 import com.example.c_login.R
 
 class IncomeActivity : AppCompatActivity() {
+
+    private lateinit var backbtn: Button
+
     private lateinit var incId: EditText
     private lateinit var incCategory: EditText
     private lateinit var incMonth: EditText
@@ -37,6 +42,8 @@ class IncomeActivity : AppCompatActivity() {
         initRecyclerView()
         sqliteHelper = DataBaseHelper(this)
 
+        backbtn = findViewById<Button>(R.id.incBack)
+
         btnAdd.setOnClickListener{ addIncome() }
         btnView.setOnClickListener{ getIncome() }
         btnUpdate.setOnClickListener{ updateIncome() }
@@ -56,7 +63,19 @@ class IncomeActivity : AppCompatActivity() {
         adapter?.setOnClickDelete {
             deleteIncome(it.inc_id)
         }
+
+        backbtn.setOnClickListener {
+            val intent = Intent(this,FunctionNavigate::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+
     }
+
+
+
 
     private fun getIncome(){
         val incList = sqliteHelper.getAllIncome()

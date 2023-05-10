@@ -10,12 +10,12 @@ import com.example.c_login.R
 
 class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.StudentViewHolder>(){
 
-     private var stdList:ArrayList<ExpenseModel> = ArrayList()
+     private var expList:ArrayList<ExpenseModel> = ArrayList()
      private var onClickItem:((ExpenseModel)->Unit)? = null
     private var onClickDeleteItem:((ExpenseModel)->Unit)? = null
 
     fun addItems(items: ArrayList<ExpenseModel>){
-        this.stdList = items
+        this.expList = items
         notifyDataSetChanged()
     }
 
@@ -28,20 +28,20 @@ class ExpenseAdapter: RecyclerView.Adapter<ExpenseAdapter.StudentViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = StudentViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.card_items_std, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.card_items_exp, parent, false)
     )
 
 
 
     override fun getItemCount(): Int {
-      return stdList.size
+      return expList.size
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        val std = stdList[position]
-        holder.bindView(std)
-        holder.itemView.setOnClickListener{ onClickItem?.invoke(std) }
-        holder.btnDelete.setOnClickListener{ onClickDeleteItem?.invoke(std) }
+        val exp = expList[position]
+        holder.bindView(exp)
+        holder.itemView.setOnClickListener{ onClickItem?.invoke(exp) }
+        holder.btnDelete.setOnClickListener{ onClickDeleteItem?.invoke(exp) }
     }
 
     class StudentViewHolder(var view: View): RecyclerView.ViewHolder(view){

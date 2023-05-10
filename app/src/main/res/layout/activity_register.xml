@@ -4,102 +4,130 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".login_company.RegisterActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="420dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="4dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
+    <LinearLayout
+
+        android:id="@+id/linearLayout4"
+        android:layout_width="335dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/colno_bg"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/bg" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="322dp"
-        android:layout_height="648dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/login2" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        tools:layout_editor_absoluteX="2dp">
 
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="User Name"
+            android:inputType="textPersonName"
+            android:paddingBottom="30dp"
+            android:textAlignment="center"
+            android:textColor="#CEB66F"
+            android:textColorHint="#CEB66F"
+            tools:layout_editor_absoluteX="78dp"
+            tools:layout_editor_absoluteY="270dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        tools:layout_editor_absoluteX="2dp">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="95dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="76dp"
-        android:backgroundTint="#F184D0"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.725"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="1.0" />
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingBottom="30dp"
+            android:textAlignment="center"
+            android:textColor="#CEB66F"
+            android:textColorHint="#CEB66F"
+            tools:layout_editor_absoluteX="78dp"
+            tools:layout_editor_absoluteY="327dp" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="96dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="459dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#939292"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        android:layout_marginBottom="56dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+        tools:layout_editor_absoluteX="0dp">
 
+        <EditText
+            android:id="@+id/editTextTextPassword2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:paddingBottom="30dp"
+            android:textAlignment="center"
+            android:textColor="#CEB66F"
+            android:textColorHint="#CEB66F"
+            tools:layout_editor_absoluteX="78dp"
+            tools:layout_editor_absoluteY="388dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="95dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="#CEB66F"
+            android:text="Back"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="487dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="96dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="75dp"
+            android:backgroundTint="#CEB66F"
+            android:text="Save"
+            tools:layout_editor_absoluteX="217dp"
+            tools:layout_editor_absoluteY="486dp" />
+
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
